@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Book Listing</string>
+
+    <string name="empty_list_view_message">No books found!</string>
+    <string name="welcome_message">About what you want to read today?</string>
+    <string name="search_button"> Search…</string>
+    <string name="http_query_address">https://www.googleapis.com/books/v1/volumes?q=</string>
+    <string name="query_max_results_key">&amp;maxResults=</string>
+    <string name="fields_projection_key">&amp;fields=</string>
+    <string name="key_argument_key">&amp;key=</string>
+    <string name="query_projection_key">&amp;projection=</string>
+    <string name="projection_lite_key">lite</string>
+    <string name="items_projection_key">items</string>
+    <string name="title_projection_key">title</string>
+    <string name="authors_projection_key">authors</string>
+    <string name="book_activity_saved_instance_booklist_key">BOOK_LIST_KEY</string>
+    <string name="book_activity_saved_instance_book_search_key">BOOK_SEARCH_VIEW_KEY</string>
+
+    <string name="http_url_not_found_message">Service unavailable</string>
+    <string name="http_generic_error_message">Service error</string>
+    <string name="network_unavailable_message">There is no Internet connection</string>
+
+    <string name="json_items_key">items</string>
+    <string name="json_authors_key">authors</string>
+    <string name="json_volume_info_key">volumeInfo</string>
+    <string name="json_image_links_key">imageLinks</string>
+    <string name="json_title_key">title</string>
+    <string name="json_description_key">description</string>
+    <string name="json_imageUrl_key">smallThumbnail</string>
+
+</resources>

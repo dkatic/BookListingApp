@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="fab_press_translation_z">12dp</dimen>
+
+    <integer name="http_read_timeout">10000</integer>
+    <integer name="http_connect_timeout">15000</integer>
+</resources>
