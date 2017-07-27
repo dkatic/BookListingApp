@@ -21,6 +21,9 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +36,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -241,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
     public void parseJson(String stringFromInputStream) {
         try {
             bookAdapter.clear();
+
             JSONObject jsonObject = new JSONObject(stringFromInputStream);
 
             // Extract the JSONArray associated with the key called "items"
@@ -248,32 +253,13 @@ public class MainActivity extends AppCompatActivity {
 
             // For each book in the bookArray, create an {@link Book} object
             for (int i = 0; i < jArray.length(); i++) {
-
-                ArrayList<String> authorList = new ArrayList<>();
-                Book book = new Book();
-
                 // For a given book, extract the JSONObject associated with the
                 // key called "volumeInfo", which represents a list of all properties
                 // for that book.
                 JSONObject volumeInfo = jArray.getJSONObject(i).getJSONObject(getString(R.string.json_volume_info_key));
 
-                // Extract the value for the key called "title"
-                String title = volumeInfo.getString(getString(R.string.json_title_key));
-                book.setTitle(title);
-
-                // Extract the value for the key called "authors"
-                JSONArray authors = volumeInfo.getJSONArray(getString(R.string.json_authors_key));
-
-                // Extract the value for the key called "description"
-                String description = volumeInfo.getString(getString(R.string.json_description_key));
-                book.setDescription(description);
-
-                for (int j = 0; j < authors.length(); j++) {
-                    String author = authors.getString(j);
-                    authorList.add(author);
-                }
-
-                book.setAuthors(authorList);
+                Gson gson = new Gson();
+                Book book = gson.fromJson(volumeInfo.toString(), Book.class);
 
                 // Add the new {@link Book} to the list of books.
                 bookAdapter.add(book);

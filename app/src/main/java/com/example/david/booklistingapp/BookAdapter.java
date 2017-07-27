@@ -64,18 +64,20 @@ public class BookAdapter extends ArrayAdapter<Book> {
         String authorsString = "";
         int authorNr = 0;
 
-        for (String author : bookAdapter.get(position).getAuthors()) {
+        if (bookAdapter.get(position).getAuthors()!=null) {
+            for (String author : bookAdapter.get(position).getAuthors()) {
 
-            if (authorNr == 0) {
-                authorsString = "";
-            }
+                if (authorNr == 0) {
+                    authorsString = "";
+                }
 
-            if (authorNr > 0) {
-                authorsString = authorsString + ", ";
+                if (authorNr > 0) {
+                    authorsString = authorsString + ", ";
+                }
+                authorsString = authorsString + author;
+                authorNr++;
+                Log.d(LOG_TAG, "Authors: " + authorsString);
             }
-            authorsString = authorsString + author;
-            authorNr++;
-            Log.d(LOG_TAG, "Authors: " + authorsString);
         }
 
         viewHolder.authors.setText(authorsString);
